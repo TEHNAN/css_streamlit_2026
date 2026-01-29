@@ -6,40 +6,18 @@ import numpy as np
 # Page Configuration
 # --------------------------------------------------
 st.set_page_config(
-    page_title="Dr. Tehnan Mohamed | Researcher Profile and STEM Data Explorer",
+    page_title="Dr. Tehnan Mohamed | Researcher Profile",
     layout="wide"
 )
 
 # --------------------------------------------------
-# Sidebar Navigation
+# Sidebar Navigation (UPDATED)
 # --------------------------------------------------
 st.sidebar.title("Navigation")
 menu = st.sidebar.radio(
     "Go to:",
-    ["Researcher Profile", "Publications", "STEM Data Explorer", "Contact"],
+    ["Researcher Profile", "Publications", "Contact"],
 )
-
-# --------------------------------------------------
-# Dummy STEM Data
-# --------------------------------------------------
-physics_data = pd.DataFrame({
-    "Experiment": ["Alpha Decay", "Beta Decay", "Gamma Ray Analysis", "Quark Study", "Higgs Boson"],
-    "Energy (MeV)": [4.2, 1.5, 2.9, 3.4, 7.1],
-    "Date": pd.date_range(start="2024-01-01", periods=5),
-})
-
-astronomy_data = pd.DataFrame({
-    "Celestial Object": ["Mars", "Venus", "Jupiter", "Saturn", "Moon"],
-    "Brightness (Magnitude)": [-2.0, -4.6, -1.8, 0.2, -12.7],
-    "Observation Date": pd.date_range(start="2024-01-01", periods=5),
-})
-
-weather_data = pd.DataFrame({
-    "City": ["Cape Town", "London", "New York", "Tokyo", "Sydney"],
-    "Temperature (°C)": [25, 10, -3, 15, 30],
-    "Humidity (%)": [65, 70, 55, 80, 50],
-    "Recorded Date": pd.date_range(start="2024-01-01", periods=5),
-})
 
 # --------------------------------------------------
 # Researcher Profile
@@ -64,8 +42,8 @@ if menu == "Researcher Profile":
     PhD in Computer Science with a strong background in artificial intelligence,
     machine learning, and data analysis. Proficient in Python, deep learning
     frameworks, and data visualization tools. Experienced in applying AI
-    solutions to real-world problems, with a strong record of research
-    publications and collaborative teamwork.
+    solutions to real-world problems, with a strong publication record and
+    collaborative research experience.
     """)
 
     st.subheader("Technical Skills")
@@ -103,13 +81,7 @@ elif menu == "Publications":
             "PLOS ONE",
             "IEEE Access"
         ],
-        "Year": [
-            2024,
-            2023,
-            2023,
-            2023,
-            2022
-        ]
+        "Year": [2024, 2023, 2023, 2023, 2022]
     })
 
     st.dataframe(publications, use_container_width=True)
@@ -126,30 +98,6 @@ elif menu == "Publications":
     - Medical image analysis  
     - Metaheuristic optimization algorithms
     """)
-
-# --------------------------------------------------
-# STEM Data Explorer
-# --------------------------------------------------
-elif menu == "STEM Data Explorer":
-    st.title("STEM Data Explorer")
-    st.sidebar.header("Data Selection")
-
-    data_option = st.sidebar.selectbox(
-        "Choose a dataset to explore",
-        ["Physics Experiments", "Astronomy Observations", "Weather Data"]
-    )
-
-    if data_option == "Physics Experiments":
-        st.subheader("Physics Experiment Data")
-        st.dataframe(physics_data)
-
-    elif data_option == "Astronomy Observations":
-        st.subheader("Astronomy Observation Data")
-        st.dataframe(astronomy_data)
-
-    elif data_option == "Weather Data":
-        st.subheader("Weather Data")
-        st.dataframe(weather_data)
 
 # --------------------------------------------------
 # Contact
